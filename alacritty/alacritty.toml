@@ -1,0 +1,100 @@
+# Alacritty Configuration (TOML)
+# Font Configuration
+[font]
+size = 14.0
+
+# Normal font style
+[font.normal]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Regular"
+
+# Bold variant
+[font.bold]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Bold"
+
+# Italic variant
+[font.italic]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Italic"
+
+# Bold-Italic variant
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Bold Italic"
+
+
+# Colors (Dark Theme)
+[colors]
+  [colors.primary]
+  background = "#1e1e2e"
+  foreground = "#f8f8f2"
+  dim_foreground = "#828482"
+
+  [colors.cursor]
+  text = "#000000"
+  cursor = "#f8f8f2"
+
+  [colors.selection]
+  text = "CellBackground"
+  background = "CellForeground"
+
+  # Normal ANSI Colors
+  [colors.normal]
+  black = "#282a36"
+  red = "#ff5555"
+  green = "#50fa7b"
+  yellow = "#f1fa8c"
+  blue = "#bd93f9"
+  magenta = "#ff79c6"
+  cyan = "#8be9fd"
+  white = "#6272a4"
+
+  # Bright ANSI Colors
+  [colors.bright]
+  black = "#44475a"
+  red = "#ff6e6e"
+  green = "#69ff94"
+  yellow = "#ffffa5"
+  blue = "#d6acff"
+  magenta = "#ff92d0"
+  cyan = "#a4ffff"
+  white = "#f8f8f2"
+
+# Window Configuration
+[window]
+dimensions = { columns = 95, lines = 20 }
+padding = { x = 10, y = 10 }
+opacity = 0.9
+dynamic_padding = false
+decorations = "Full"
+startup_mode = "Windowed"
+
+# Cursor Configuration
+[cursor]
+style = { shape = "Underline", blinking = "Off" }
+blink_interval = 750
+blink_timeout = 5
+unfocused_hollow = true
+thickness = 0.15
+
+# Scrolling
+[scrolling]
+history = 10000
+multiplier = 3
+
+# Mouse
+[mouse]
+hide_when_typing = true
+
+# Keybindings
+[keyboard]
+bindings = [
+  { key = "C", mods = "Control|Shift", action = "Copy" },
+  { key = "V", mods = "Control|Shift", action = "Paste" },
+  { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+  { key = "Equals", mods = "Control", action = "IncreaseFontSize" },
+  { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
+  { key = "0", mods = "Control", action = "ResetFontSize" },
+]
+
