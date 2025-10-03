@@ -1,100 +1,99 @@
-# Alacritty Configuration (TOML)
-# Font Configuration
-[font]
-size = 14.0
+# Alacritty Config - Dracula Theme + JetBrainsMono Nerd Font
+# Improved for readability, usability & performance
 
-# Normal font style
+[bell]
+animation = "EaseOutExpo"
+duration = 0 # Disable bell sound duration
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.primary]
+background = "0x282A36"
+foreground = "0xF8F8F2"
+
+[colors.normal]
+black   = "0x21222C"
+red     = "0xFF5555"
+green   = "0x50FA7B"
+yellow  = "0xF1FA8C"
+blue    = "0xBD93F9"
+magenta = "0xFF79C6"
+cyan    = "0x8BE9FD"
+white   = "0xF8F8F2"
+
+[colors.bright]
+black   = "0x6272A4"
+red     = "0xFF5555"
+green   = "0x50FA7B"
+yellow  = "0xF1FA8C"
+blue    = "0xBD93F9"
+magenta = "0xFF79C6"
+cyan    = "0x8BE9FD"
+white   = "0xF8F8F2"
+
+[colors.cursor]
+cursor = "0xF8F8F2"
+text   = "0x282A36"
+
+[cursor]
+blink_interval = 500
+blink_timeout = 5
+
+[cursor.style]
+shape = "Beam"
+blinking = "off"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 14
+builtin_box_drawing = true # Better rendering for box-drawing characters
+
 [font.normal]
-family = "JetBrainsMono Nerd Font Mono"
+family = "JetBrainsMono Nerd Font"
 style = "Regular"
 
-# Bold variant
 [font.bold]
-family = "JetBrainsMono Nerd Font Mono"
+family = "JetBrainsMono Nerd Font"
 style = "Bold"
 
-# Italic variant
 [font.italic]
-family = "JetBrainsMono Nerd Font Mono"
+family = "JetBrainsMono Nerd Font"
 style = "Italic"
 
-# Bold-Italic variant
-[font.bold_italic]
-family = "JetBrainsMono Nerd Font Mono"
-style = "Bold Italic"
+[font.offset]
+x = 0
+y = 1   # Slight vertical adjustment for better alignment
 
+[font.glyph_offset]
+x = 0
+y = 0
 
-# Colors (Dark Theme)
-[colors]
-  [colors.primary]
-  background = "#1e1e2e"
-  foreground = "#f8f8f2"
-  dim_foreground = "#828482"
-
-  [colors.cursor]
-  text = "#000000"
-  cursor = "#f8f8f2"
-
-  [colors.selection]
-  text = "CellBackground"
-  background = "CellForeground"
-
-  # Normal ANSI Colors
-  [colors.normal]
-  black = "#282a36"
-  red = "#ff5555"
-  green = "#50fa7b"
-  yellow = "#f1fa8c"
-  blue = "#bd93f9"
-  magenta = "#ff79c6"
-  cyan = "#8be9fd"
-  white = "#6272a4"
-
-  # Bright ANSI Colors
-  [colors.bright]
-  black = "#44475a"
-  red = "#ff6e6e"
-  green = "#69ff94"
-  yellow = "#ffffa5"
-  blue = "#d6acff"
-  magenta = "#ff92d0"
-  cyan = "#a4ffff"
-  white = "#f8f8f2"
-
-# Window Configuration
-[window]
-dimensions = { columns = 95, lines = 20 }
-padding = { x = 10, y = 10 }
-opacity = 0.9
-dynamic_padding = false
-decorations = "Full"
-startup_mode = "Windowed"
-
-# Cursor Configuration
-[cursor]
-style = { shape = "Underline", blinking = "Off" }
-blink_interval = 750
-blink_timeout = 5
-unfocused_hollow = true
-thickness = 0.15
-
-# Scrolling
-[scrolling]
-history = 10000
-multiplier = 3
-
-# Mouse
 [mouse]
 hide_when_typing = true
 
-# Keybindings
-[keyboard]
-bindings = [
-  { key = "C", mods = "Control|Shift", action = "Copy" },
-  { key = "V", mods = "Control|Shift", action = "Paste" },
-  { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
-  { key = "Equals", mods = "Control", action = "IncreaseFontSize" },
-  { key = "Minus", mods = "Control", action = "DecreaseFontSize" },
-  { key = "0", mods = "Control", action = "ResetFontSize" },
-]
+[[mouse.bindings]]
+mouse = "Middle"
+action = "PasteSelection"
 
+[selection]
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[terminal]
+shell = "/bin/zsh"
+
+[window]
+decorations = "full"
+dynamic_title = true
+startup_mode = "Maximized" # Better than Windowed for workflows
+opacity = 0.9              # Slight transparency for style
+
+[window.dimensions]
+columns = 110
+lines = 30
+
+[window.padding]
+x = 6
+y = 6
