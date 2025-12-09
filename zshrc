@@ -104,6 +104,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias ls='ls --color=auto'
 alias vim='nvim'
 alias c='clear'
+alias info='fastfetch'
 # For Pacman
 alias update='sudo pacman -Syu'
 alias install='sudo pacman -S'
