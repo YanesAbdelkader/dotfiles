@@ -1,0 +1,117 @@
+# ==============================================
+# Sway Config
+# ==============================================
+
+### Variables
+include ~/.cache/wal/colors-sway
+
+set $mod Mod4
+set $left Left
+set $down Down
+set $up Up
+set $right Right
+
+set $lockscreen swaylock -f -i /path/to/your/lockscreen/image.png
+set $kill_waybar killall -9 waybar && waybar
+
+set $launcher fuzzel show menu
+set $terminal alacritty
+set $file_manager thunar
+set $browser zen-browser
+set $screenshot grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot-$(date +%s).png
+
+### Output
+output eDP-1 resolution 1920x1080@59.99Hz position 1080 0 transform normal
+workspace 1 output eDP-1
+
+### Window Gaps & Borders
+gaps inner 2
+gaps outer 2
+default_border pixel 1
+
+### Window Colors
+client.focused          $color1 $color1 $foreground $color3 $color1
+client.focused_inactive $color8 $color8 $foreground $color3 $color8
+client.unfocused        $color0 $color0 $foreground $color8 $color0
+client.urgent           $color9 $color9 $foreground $color3 $color9
+client.placeholder      $background $background $foreground $color3 $background
+
+### Input configuration
+input "DLL07A0:01 044E:120B" {
+    dwt enabled              # Disable While Typing
+    tap enabled              # Tap to click
+    natural_scroll enabled   # Reverse scrolling
+    middle_emulation enabled # 3-finger tap as middle-click
+}
+
+### Key Bindings
+bindsym $mod+q kill
+bindsym $mod+Shift+Return floating toggle
+floating_modifier $mod
+floating_modifier $mod normal
+bindsym $mod+F5 exec $kill_waybar &
+bindsym Alt+F4 exec $kill_waybar && swaymsg  reload &
+bindsym $mod+l exec $lockscreen
+
+# launching apps
+bindsym $mod+r exec $launcher
+bindsym $mod+e exec $file_manager
+bindsym $mod+w exec $browser
+bindsym $mod+Return exec $terminal
+bindsym $mod+Shift+s exec $screenshot
+
+# focus and moveing windows
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+f fullscreen
+bindsym Ctrl+ALt+$left exec swaymsg workspace prev
+bindsym Ctrl+Alt+$right exec swaymsg workspace next
+
+# Workspaces
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# Generic keyboard layout
+input * {
+    xkb_layout "us,ara"
+    xkb_options "grp:alt_shift_toggle"
+}
+exec setxkbmap -layout "us,ara" -option "grp:alt_shift_toggle"
+
+# Idle
+exec swayidle -w \
+    timeout 300 $lockscreen \
+    before-sleep $lockscreen
+
+### Startup Applications
+exec_always {
+    swaybg -i $wallpaper -m fill
+}
+exec gsettings set org.gnome.desktop.interface icon-theme "dracula-icons-circle"
+
+### Include other configs
+include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'

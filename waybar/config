@@ -1,0 +1,139 @@
+{
+  "layer": "top",
+  "modules-left": [
+    "custom/power",
+    "sway/workspaces"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "sway/language",
+    "pulseaudio",
+    "network",
+    "bluetooth",
+    "battery"
+  ],
+  "custom/power": {
+    "format": "⏻ ",
+    "on-click": "$HOME/.config/fuzzel/scripts/powermenu.sh",
+    "tooltip": false
+  },
+  "sway/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "sort-by-number": true,
+    "tooltip": false,
+    "format-icons": {
+      "focused": "",
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": []
+    }
+  },
+  "clock": {
+    "format": "{:%H:%M}",
+    "format-alt": "{:%A %d %B %Y}",
+    "tooltip": false
+  },
+  "cpu": {
+    "interval": 5,
+    "format": "{usage}% "
+  },
+  "memory": {
+    "interval": 5,
+    "format": "{used:0.1f}G "
+  },
+  "sway/language": {
+    "format": "{short} {variant}"
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon} ",
+    "format-bluetooth": "{volume}%  ",
+    "format-muted": " ",
+    "format-icons": {
+      "alsa_output.pci-0000_00_1f.3.analog-stereo": "",
+      "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "",
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "phone-muted": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        ""
+      ]
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "ignored-sinks": [
+      "Easy Effects Sink"
+    ]
+  },
+  "network": {
+    "interface": "wlp2s0",
+    "format": " {icon} ",
+    "format-wifi": " {icon} ",
+    "format-ethernet": "󰈀 {ipaddr}",
+    "format-disconnected": "󰖪",
+    "format-icons": {
+      "wifi": [
+        "󰤯",
+        "󰤟",
+        "󰤢",
+        "󰤥",
+        "󰤨"
+      ],
+      "ethernet": "󰈀",
+      "disconnected": "󰖪"
+    },
+    "tooltip-format": "Interface: {ifname}",
+    "tooltip-format-wifi": "Wifi: {essid}\nSignal: {signalStrength}%\nIP: {ipaddr}",
+    "tooltip-format-ethernet": "Ethernet\nIP: {ipaddr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click-right": "nm-connection-editor"
+  },
+  "bluetooth": {
+    "format": " {icon} ",
+    "format-disabled": " 󰂲 ",
+    "format-disconnected": " 󰂲 ",
+    "format-connected": "  ",
+    "format-icons": {
+      "disabled": " 󰂲 ",
+      "disconnected": " 󰂲 ",
+      "connected": "  "
+    },
+    "tooltip-format": "Controller: {controller_alias}\nAddress: {controller_address}",
+    "tooltip-format-disabled": "Bluetooth disabled",
+    "tooltip-format-disconnected": "Bluetooth enabled\nNo devices connected",
+    "tooltip-format-connected": "{device_alias}\n{device_address}",
+    "tooltip-format-connected-battery": "{device_alias}\n{device_address}\nBattery: {device_battery_percentage}%",
+    "tooltip-format-enumerate-connected": "{device_alias}  ({device_address})",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}  ({device_address})  {device_battery_percentage}%",
+    "on-click": "blueman-manager"
+  },
+  "battery": {
+    "format": " {capacity}% {icon} ",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ],
+    "format-charging": "{capacity}% ",
+    "format-full": "{capacity}% ",
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
+  }
+}

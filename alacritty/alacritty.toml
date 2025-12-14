@@ -2,8 +2,10 @@
 # Alacritty Config
 # --------------------------------------------------
 
-[env]
-TERM = "xterm-256color"
+[general]
+import = [
+  "~/.cache/wal/colors-alacritty.toml",
+]
 
 # --------------------------------------------------
 # Window
@@ -70,36 +72,6 @@ y = 1
 [font.glyph_offset]
 x = 0
 y = 0
-
-# --------------------------------------------------
-# Colors (Dracula)
-# --------------------------------------------------
-[colors]
-draw_bold_text_with_bright_colors = true
-
-[colors.primary]
-background = "0x282A36"
-foreground = "0xF8F8F2"
-
-[colors.normal]
-black   = "0x21222C"
-red     = "0xFF5555"
-green   = "0x50FA7B"
-yellow  = "0xF1FA8C"
-blue    = "0xBD93F9"
-magenta = "0xFF79C6"
-cyan    = "0x8BE9FD"
-white   = "0xF8F8F2"
-
-[colors.bright]
-black   = "0x6272A4"
-red     = "0xFF5555"
-green   = "0x50FA7B"
-yellow  = "0xF1FA8C"
-blue    = "0xBD93F9"
-magenta = "0xFF79C6"
-cyan    = "0x8BE9FD"
-white   = "0xF8F8F2"
 
 # --------------------------------------------------
 # Mouse
