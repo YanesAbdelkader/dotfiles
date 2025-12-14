@@ -87,12 +87,7 @@ chsh -s "$(which zsh)"
 Create required directories:
 
 ```bash
-mkdir -p \
-  ~/.config/alacritty \
-  ~/.config/sway \
-  ~/.config/waybar \
-  ~/.config/fuzzel \
-  ~/.config/swaylock
+mkdir -p ~/.config/alacritty ~/.config/sway ~/.config/waybar ~/.config/fuzzel ~/.config/swaylock
 ```
 
 Move dotfiles into place (overwrites existing files):
@@ -157,4 +152,5 @@ php -r "if (hash_file('sha384', 'composer-setup.php') === 'c8b085408188070d5f52b
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
 sudo mv composer.phar /usr/local/bin/composer
+composer global require laravel/installer
 ```
