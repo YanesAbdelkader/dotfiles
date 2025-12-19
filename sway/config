@@ -11,13 +11,16 @@ set $down Down
 set $up Up
 set $right Right
 
-set $lockscreen swaylock -f -i /path/to/your/lockscreen/image.png
+set $lockscreen swaylock
 set $kill_waybar killall -9 waybar && waybar
+set $theme "$HOME/.config/fuzzel/scripts/theming.sh"
+set $power "$HOME/.config/fuzzel/scripts/powermenu.sh"
 
 set $launcher fuzzel show menu
 set $terminal alacritty
-set $file_manager thunar
+set $file_manager nautilus
 set $browser zen-browser
+set $editor code
 set $screenshot grim -g "$(slurp)" ~/Pictures/Screenshots/screenshot-$(date +%s).png
 
 ### Output
@@ -25,9 +28,9 @@ output eDP-1 resolution 1920x1080@59.99Hz position 1080 0 transform normal
 workspace 1 output eDP-1
 
 ### Window Gaps & Borders
-gaps inner 2
-gaps outer 2
-default_border pixel 1
+gaps inner 1
+gaps outer 1
+default_border pixel 2
 
 ### Window Colors
 client.focused          $color1 $color1 $foreground $color3 $color1
@@ -36,12 +39,16 @@ client.unfocused        $color0 $color0 $foreground $color8 $color0
 client.urgent           $color9 $color9 $foreground $color3 $color9
 client.placeholder      $background $background $foreground $color3 $background
 
+# Window rules
+for_window [class="discord"] move container to workspace number 5;opacity 0.95
+for_window [class="Spotify"] move container to workspace number 6;opacity 0.95
+for_window [app_id="zen"] move container to workspace number 3; opacity 0.95
+for_window [app_id="code"] move container to workspace number 2; opacity 0.95
+for_window [app_id="org.gnome.Nautilus"] opacity 0.95
+
 ### Input configuration
 input "DLL07A0:01 044E:120B" {
-    dwt enabled              # Disable While Typing
-    tap enabled              # Tap to click
     natural_scroll enabled   # Reverse scrolling
-    middle_emulation enabled # 3-finger tap as middle-click
 }
 
 ### Key Bindings
@@ -52,11 +59,14 @@ floating_modifier $mod normal
 bindsym $mod+F5 exec $kill_waybar &
 bindsym Alt+F4 exec $kill_waybar && swaymsg  reload &
 bindsym $mod+l exec $lockscreen
+bindsym $mod+Shift+t exec $theme
+bindsym $mod+Shift+p exec $power
 
 # launching apps
 bindsym $mod+r exec $launcher
 bindsym $mod+e exec $file_manager
 bindsym $mod+w exec $browser
+bindsym $mod+Space exec $editor
 bindsym $mod+Return exec $terminal
 bindsym $mod+Shift+s exec $screenshot
 
@@ -109,6 +119,10 @@ exec swayidle -w \
 
 ### Startup Applications
 exec_always {
+    gsettings set $gnome-schema gtk-theme 'Dracula'
+    gsettings set $gnome-schema icon-theme 'dracula-icons-circle'
+    gsettings set $gnome-schema cursor-theme 'Borealis-cursors'
+    gsettings set $gnome-schema font-name 'Noto Sans Mono 10'
     swaybg -i $wallpaper -m fill
 }
 exec gsettings set org.gnome.desktop.interface icon-theme "dracula-icons-circle"

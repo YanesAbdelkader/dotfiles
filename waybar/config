@@ -2,7 +2,9 @@
   "layer": "top",
   "modules-left": [
     "custom/power",
-    "sway/workspaces"
+    "sway/workspaces",
+    "custom/theme",
+    "tray"
   ],
   "modules-center": [
     "clock"
@@ -12,6 +14,7 @@
     "memory",
     "sway/language",
     "pulseaudio",
+    "backlight",
     "network",
     "bluetooth",
     "battery"
@@ -37,10 +40,18 @@
       "4": []
     }
   },
+  "custom/theme": {
+    "format": "",
+    "tooltip-format": "select wallpaper | lockscreen",
+    "on-click": "$HOME/.config/fuzzel/scripts/theming.sh"
+  },
+  "tray": {
+    "icon-size": 20
+  },
   "clock": {
-    "format": "{:%H:%M}",
-    "format-alt": "{:%A %d %B %Y}",
-    "tooltip": false
+    "format": "{:%H:%M} ",
+    "format-alt": "{:%A %d %B %Y} ",
+    "tooltip-format": "{:%A %d %B %Y\n\t%H:%M:%S}"
   },
   "cpu": {
     "interval": 5,
@@ -48,10 +59,10 @@
   },
   "memory": {
     "interval": 5,
-    "format": "{used:0.1f}G "
+    "format": "{used:0.1f}G  "
   },
   "sway/language": {
-    "format": "{short} {variant}"
+    "format": "{short}"
   },
   "pulseaudio": {
     "format": "{volume}% {icon} ",
@@ -78,12 +89,21 @@
       "Easy Effects Sink"
     ]
   },
+  "backlight": {
+    "format": "{percent}% {icon}",
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃝",
+      "󰃠"
+    ]
+  },
   "network": {
-    "interface": "wlp2s0",
     "format": " {icon} ",
     "format-wifi": " {icon} ",
-    "format-ethernet": "󰈀 {ipaddr}",
+    "format-ethernet": " 󰈀 ",
     "format-disconnected": "󰖪",
+    "format-disabled": "󰖪",
     "format-icons": {
       "wifi": [
         "󰤯",
@@ -99,17 +119,15 @@
     "tooltip-format-wifi": "Wifi: {essid}\nSignal: {signalStrength}%\nIP: {ipaddr}",
     "tooltip-format-ethernet": "Ethernet\nIP: {ipaddr}",
     "tooltip-format-disconnected": "Disconnected",
-    "on-click-right": "nm-connection-editor"
+    "on-click": "$HOME/.config/fuzzel/scripts/wifi-menu.sh"
   },
   "bluetooth": {
     "format": " {icon} ",
-    "format-disabled": " 󰂲 ",
-    "format-disconnected": " 󰂲 ",
-    "format-connected": "  ",
     "format-icons": {
-      "disabled": " 󰂲 ",
-      "disconnected": " 󰂲 ",
-      "connected": "  "
+      "on": "",
+      "disabled": "󰂲",
+      "connected": "",
+      "disconnected": "󰂲"
     },
     "tooltip-format": "Controller: {controller_alias}\nAddress: {controller_address}",
     "tooltip-format-disabled": "Bluetooth disabled",

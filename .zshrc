@@ -20,6 +20,12 @@ done
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 
 # -----------------------------
+# Environment Variables
+# -----------------------------
+export PATH="$HOME/.local/bin:$PATH"
+(cat ~/.cache/wal/sequences &)
+
+# -----------------------------
 # Powerlevel10k Instant Prompt
 # -----------------------------
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
@@ -102,22 +108,22 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # -----------------------------
 # Aliases
 # -----------------------------
-alias ls='ls --color=auto'
-alias vim='nvim'
+alias ls='la --color=auto'
 alias c='clear'
 alias info='fastfetch'
 
 # DNF
-alias update='sudo dnf upgrade --refresh'
 alias install='sudo dnf install'
+alias update='sudo dnf update'
 alias remove='sudo dnf remove'
 alias search='dnf search'
 alias clean='sudo dnf clean all'
 
 # Git
-alias gi='git init'
-alias gcm='git commit -m'
+alias gin='git init'
 alias gst='git status'
+alias gad='git add'
+alias gcm='git commit -m'
 alias gph='git push'
 alias gpl='git pull'
 alias clone='git clone'
@@ -135,5 +141,4 @@ if (( $+commands[fzf] )); then
 fi
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-(cat ~/.cache/wal/sequences &)
+# End of .zshrc
