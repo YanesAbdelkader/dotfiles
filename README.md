@@ -2,7 +2,7 @@
 
 Personal dotfiles for a clean, opinionated Fedora Sway Spin setup.
 
-you can get the distro from here : https://www.fedoraproject.org/spins/sway
+you can get the distro from here : [fedora-sway-43](https://fedoraproject.org/spins/sway/download/)
 
 ---
 
@@ -45,7 +45,7 @@ sudo dnf update -y
 Core packages:
 
 ```bash
-sudo dnf install -y zsh fzf zoxide alacritty fuzzel grim slurp nautilus dunst fastfetch python3-pip gdm 
+sudo dnf install -y zsh fzf zoxide alacritty fuzzel gdm grim slurp nautilus dunst fastfetch python3-pip
 ```
 
 Pywal:
